@@ -23,12 +23,13 @@ describe Show do
   end
 
   describe "#network" do
-    it "returns the network that the show belongs to" do
-      show = Show.create(name: "Community", day: "Thursday", season: "Winter", genre: "Comedy")
-      network = show.build_network(call_letters: "NBC")
-      expect(show.network).to eq(network)
-    end
+  it "returns the network that the show belongs to" do
+    network = Network.create(call_letters: "NBC")
+    show = Show.create(name: "Community", day: "Thursday", season: "Winter", genre: "Comedy", network: network)
+    expect(show.network).to eq(network)
   end
+end
+
 
   describe "#actors_list" do
     it "returns a list of the full names of each actor associated with the show" do
